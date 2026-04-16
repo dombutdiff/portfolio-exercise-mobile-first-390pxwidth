@@ -12,14 +12,31 @@
 
   <main>
 
-     <header>
-      <div class="header-container">
-        <h1>pearl</h1>
-        <div class="header-burger-menu">
-          <button><i class="ri-menu-fill"></i></button>
-        </div>
-      </div>
+     <header class="header">
+        <div class="logo">STUDIO<b>X</b></div>
+        
+        <nav class="desktop-nav">
+            <a href="#" class="nav-link">Work</a>
+            <a href="#" class="nav-link">About</a>
+            <a href="#" class="nav-link">Services</a>
+            <a href="#" class="nav-link">Contact</a>
+        </nav>
+
+        <button class="burger" id="burgerBtn">
+            <span></span>
+            <span></span>
+        </button>
     </header>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <nav class="mobile-nav">
+            <a href="#" class="mobile-link">Work</a>
+            <a href="#" class="mobile-link">About</a>
+            <a href="#" class="mobile-link">Services</a>
+            <a href="#" class="mobile-link">Contact</a>
+        </nav>
+    </div>
+
     
     <div class="main-container">
       <section class="hero-section">
@@ -86,40 +103,61 @@
         </div>
       </section>
 
-      <section class="services-section">
-        <div class="story-title">
-          <p>Services</p>
+      <section class="services-container">
+        <h1 class="services-title">Services</h1>
+        <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+                <h2>Branding</h2>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+            </button>
+            <div class="accordion-content">
+                <ul class="accordion-body">
+                    <li>Logo Design</li>
+                    <li>Brand Guidelines</li>
+                    <li>Collateral Design</li>
+                    <li>Rebranding Services</li>
+                </ul>
+            </div>
         </div>
-        <div class="services-menu">
-          <div class="services-menu-container">
-            <div class="services-menu-info">
-              <h1>Branding</h1>
-              <i class="ri-arrow-down-line"></i>
+
+        <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+                <h2>Motion & Animation</h2>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+            </button>
+            <div class="accordion-content">
+                <ul class="accordion-body">
+                    <li>Motion Graphics Design</li>
+                    <li>Animated Explainer Videos</li>
+                    <li>Interactive Presentations</li>
+                </ul>
             </div>
-            <div class="services-line"></div>
-          </div>
-          <div class="services-menu-container">
-            <div class="services-menu-info">
-              <h1>UX/UI Designs</h1>
-              <i class="ri-arrow-down-line"></i>
-            </div>
-            <div class="services-line"></div>
-          </div>
-          <div class="services-menu-container">
-            <div class="services-menu-info">
-              <h1>Motion & Animation</h1>
-              <i class="ri-arrow-down-line"></i>
-            </div>
-            <div class="services-line"></div>
-          </div>
-          <div class="services-menu-container">
-            <div class="services-menu-info">
-              <h1>Mobile</h1>
-              <i class="ri-arrow-down-line"></i>
-            </div>
-            <div class="services-line"></div>
-          </div>
         </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+                <h2>Mobile</h2>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+            </button>
+            <div class="accordion-content">
+                <ul class="accordion-body">
+                    <li>iOS App Development</li>
+                    <li>Android App Development</li>
+                    <li>App Prototyping and Testing</li>
+                    <li>App Maintenance and Updates</li>
+                </ul>
+            </div>
+        </div>
+
       </section>
 
       <section class="story-section">
@@ -294,5 +332,8 @@
       </section>
     </div>
   </footer>
+
+
+  <script src="./script.js"></script>
 </body>
 </html>
