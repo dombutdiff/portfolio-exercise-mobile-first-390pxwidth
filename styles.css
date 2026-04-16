@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
-
 :root {
   /* FONT SIZING */
   --fs-xsmall: 16px;
@@ -31,6 +29,12 @@
   --btn-padding: 16px 32px;
   --btn-brdr: none;
   --btn-radius: 64px;
+
+
+  --header-height: 60px;
+  --bg-glossy: rgba(255, 255, 255, 0);
+  --accent: #000;
+  --transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 * {
@@ -67,9 +71,9 @@ body {
 }
 
 /* HEADER */
-
+/* 
 header {
-  position: sticky; /* Sticky is the key here */
+  position: sticky; 
   top: 0;
   width: 100%;
   background-color: white;
@@ -92,6 +96,122 @@ header {
 
 .header-burger-menu button i {
   font-size: 22px;
+} */
+
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: var(--header-height);
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-glossy);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+/* Burger Button */
+.burger {
+    width: 30px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 1100;
+}
+
+.burger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    margin: 6px 0;
+    transition: var(--transition);
+}
+
+/* Close Icon State */
+.burger.active span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+.burger.active span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+
+/* Fullscreen Overlay */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: var(--transition);
+    z-index: 900;
+    opacity: 0;
+}
+
+.menu-overlay.open {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+}
+
+.mobile-link {
+    font-size: 2.4rem;
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Staggered link animation when menu opens */
+.menu-overlay.open .mobile-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-overlay.open .mobile-link:nth-child(1) { transition-delay: 0.3s; }
+.menu-overlay.open .mobile-link:nth-child(2) { transition-delay: 0.4s; }
+.menu-overlay.open .mobile-link:nth-child(3) { transition-delay: 0.5s; }
+.menu-overlay.open .mobile-link:nth-child(4) { transition-delay: 0.6s; }
+
+/* Desktop View */
+.desktop-nav { display: none; }
+
+@media (min-width: 768px) {
+
+    .burger { display: none; }
+    .desktop-nav {
+        display: flex;
+        gap: 2rem;
+    }
+    .nav-link {
+        text-decoration: none;
+        color: var(--accent);
+        font-weight: 500;
+        transition: opacity 0.3s;
+        font-size: 1.4rem;
+    }
+    .nav-link:hover { opacity: 0.5; }
+    .menu-overlay { display: none; }
 }
 
 /* HEADER */
@@ -102,6 +222,7 @@ header {
 
 main {
   position: relative;
+  top: 0;
   left: 0;
   right: 0;
   width: 100%;
@@ -111,11 +232,10 @@ main {
 }
 
 .main-container {
-  padding: 120px 0 160px;
   display: flex;
   flex-direction: column;
   row-gap: 80px;
-  padding: 16px;
+  padding: 80px 16px;
 }
 
 .hero-section {
@@ -239,7 +359,7 @@ main {
 
 /* SERVICES SECTION */
 
-.services-section {
+/* .services-section {
   display: flex;
   flex-direction: column;
   row-gap: 48px;
@@ -279,7 +399,123 @@ main {
   width: 100%;
   height: 1px;
   background: var(--tertiary-clr);
-}
+} */
+
+
+/* --- Main Container (Column Flex Direction) --- */
+  .services-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 800px;
+  }
+
+  .services-label {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 40px;
+  }
+
+  .services-title {
+      font-size: 16px;
+      margin-bottom: 30px;
+      font-weight: 400;
+  }
+
+  /* --- Accordion Item & The "Line Between" --- */
+  .accordion-item {
+      border-bottom: 1px solid #e0e0e0;
+      overflow: hidden;
+  }
+
+  /* Remove border from last item just like the image */
+  /* .accordion-item:last-child {
+      border-bottom: none;
+  } */
+
+  /* --- Button/Header (Space Between Title and Arrow) --- */
+  .accordion-header {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 0;
+      outline: none;
+  }
+
+  /* Title text styling - slightly larger than content */
+  .accordion-header h2 {
+      font-size: 32px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+  }
+
+  /* --- Custom Arrow SVG with "Back-Pointing" logic --- */
+  .icon {
+      width: 32px;
+      height: 32px;
+      transition: transform 0.3s ease-in-out;
+      transform: rotate(0deg); /* State: Closed (Pointing Down) */
+  }
+
+  /* --- Content Area - Set up for Height Animation --- */
+  .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out; /* Uses height for smooth dropdown */
+  }
+
+  /* --- Inner Content Styling (Padding/List style) --- */
+  .accordion-body {
+      list-style: none;
+      padding-bottom: 25px; /* Spacing below last item when open */
+  }
+
+  .accordion-body li {
+      font-size: 20px;
+      margin-bottom: 15px;
+      line-height: 1.4;
+      color: #333;
+      transform: translateY(10px);
+      opacity: 0;
+      /* Delay the text fade-in until the container has started moving */
+      transition: all 0.4s ease;
+    
+  }
+
+  /* Keep last item clean */
+  .accordion-body li:last-child {
+      margin-bottom: 0;
+  }
+
+  /* --- ACTIVE STATE RULES --- */
+
+  /* Rule to open the content */
+  .accordion-item.active .accordion-content {
+      max-height: 500px; /* Arbitrary high value for height transition to 'auto' */
+      opacity: 1;
+      pointer-events: all;
+  }
+
+  /* Rule to flip arrow UP when active */
+  .accordion-item.active .icon {
+      transform: rotate(180deg);
+  }
+
+  .accordion-item.active .accordion-body li {
+      transform: translateY(0);
+      opacity: 1;
+  }
+
+  /* Staggered delay for each list item for the "Fade" effect */
+  .accordion-item.active .accordion-body li:nth-child(1) { transition-delay: 0.1s; }
+  .accordion-item.active .accordion-body li:nth-child(2) { transition-delay: 0.2s; }
+  .accordion-item.active .accordion-body li:nth-child(3) { transition-delay: 0.3s; }
+  .accordion-item.active .accordion-body li:nth-child(4) { transition-delay: 0.4s; }
 
 /* SERVICES SECTION */
 
@@ -289,7 +525,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
-  padding: 20px;
+  padding: 100px 40px;
 }
 
 .logo-section .logo {
