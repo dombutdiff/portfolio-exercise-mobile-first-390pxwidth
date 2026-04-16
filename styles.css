@@ -111,6 +111,7 @@ header {
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     z-index: 1000;
+    /* border: 2px solid black; */
 }
 
 .logo {
@@ -122,12 +123,13 @@ header {
 /* Burger Button */
 .burger {
     width: 30px;
-    height: 20px;
+    height: 40px;
     background: none;
     border: none;
     cursor: pointer;
     position: relative;
     z-index: 1100;
+    /* border: 2px solid black; */
 }
 
 .burger span {
@@ -140,8 +142,9 @@ header {
 }
 
 /* Close Icon State */
-.burger.active span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
-.burger.active span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+.burger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.burger.active span:nth-child(2) { opacity: 0; }
+.burger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
 /* Fullscreen Overlay */
 .menu-overlay {
@@ -408,65 +411,66 @@ main {
       flex-direction: column;
       width: 100%;
       max-width: 800px;
-  }
-
-  .services-label {
+    }
+    
+    .services-label {
       font-size: 14px;
       color: #666;
       margin-bottom: 40px;
-  }
-
-  .services-title {
+    }
+    
+    .services-title {
       font-size: 16px;
       margin-bottom: 30px;
       font-weight: 400;
-  }
-
-  /* --- Accordion Item & The "Line Between" --- */
-  .accordion-item {
+    }
+    
+    /* --- Accordion Item & The "Line Between" --- */
+    .accordion-item {
       border-bottom: 1px solid #e0e0e0;
       overflow: hidden;
-  }
-
-  /* Remove border from last item just like the image */
-  /* .accordion-item:last-child {
+    }
+    
+    /* Remove border from last item just like the image */
+    /* .accordion-item:last-child {
       border-bottom: none;
-  } */
-
-  /* --- Button/Header (Space Between Title and Arrow) --- */
-  .accordion-header {
-      width: 100%;
-      background: none;
-      border: none;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 25px 0;
-      outline: none;
-  }
-
-  /* Title text styling - slightly larger than content */
-  .accordion-header h2 {
-      font-size: 32px;
-      font-weight: 500;
-      transition: color 0.3s ease;
-  }
-
-  /* --- Custom Arrow SVG with "Back-Pointing" logic --- */
-  .icon {
-      width: 32px;
-      height: 32px;
-      transition: transform 0.3s ease-in-out;
-      transform: rotate(0deg); /* State: Closed (Pointing Down) */
-  }
-
-  /* --- Content Area - Set up for Height Animation --- */
-  .accordion-content {
+      } */
+      
+      /* --- Button/Header (Space Between Title and Arrow) --- */
+      .accordion-header {
+        width: 100%;
+        background: none;
+        border: none;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 0;
+        outline: none;
+      }
+      
+      /* Title text styling - slightly larger than content */
+      .accordion-header h2 {
+        font-size: 32px;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+      
+      /* --- Custom Arrow SVG with "Back-Pointing" logic --- */
+      .icon {
+        width: 32px;
+        height: 32px;
+        transition: transform 0.3s ease-in-out;
+        transform: rotate(0deg); /* State: Closed (Pointing Down) */
+      }
+      
+      /* --- Content Area - Set up for Height Animation --- */
+      .accordion-content {
+      transition: var(--transition);
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease-out; /* Uses height for smooth dropdown */
+      /* transition: max-height 0.3s ease-out;  */
   }
 
   /* --- Inner Content Styling (Padding/List style) --- */
